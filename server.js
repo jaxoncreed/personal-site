@@ -19,7 +19,7 @@ var debug = debugLib('fluxible-template');
 
 var server = express();
 server.set('state namespace', 'App');
-server.use('/public', express.static(path.join(__dirname, '/build')));
+server.use('/public', express.static(path.join(__dirname, '/public')));
 
 server.use(function(req, res, next) {
     var context = app.createContext();

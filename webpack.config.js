@@ -4,7 +4,7 @@ module.exports = {
     },
     entry: './client.js',
     output: {
-        path: './build/js',
+        path: './public/js',
         publicPath: '/public/js/',
         filename: '[name].js'
     },
