@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
     grunt.initConfig({
-        clean: ['public'],
+        clean: ['public/js'],
         concurrent: {
             dev: ['nodemon:app', 'webpack:dev'],
             options: {
