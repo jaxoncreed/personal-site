@@ -25845,9 +25845,10 @@
 	
 	        return React.createElement(
 	            'div',
-	            null,
-	            React.createElement(Nav, { selected: this.props.currentPageName, links: this.props.pages }),
-	            React.createElement(Handler, null)
+	            { className: 'o-site-container' },
+	            React.createElement(Header, null),
+	            React.createElement(Handler, null),
+	            React.createElement(Footer, null)
 	        );
 	    },
 	

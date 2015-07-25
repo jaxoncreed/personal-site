@@ -14,9 +14,10 @@ var Application = React.createClass({
         var Handler = this.props.currentRoute.get('handler');
 
         return (
-            <div>
-                <Nav selected={this.props.currentPageName} links={this.props.pages} />
+            <div className="o-site-container">
+                <Header />
                 <Handler />
+                <Footer />
             </div>
         );
     },
