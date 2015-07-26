@@ -6,12 +6,20 @@ module.exports = {
         title: 'Home',
         handler: require('../components/home/Home')
     },
-    blog: {
+    blogList: {
         path: '/blog',
         method: 'get',
         page: 'blog',
         title: 'Blog',
         handler: require('../components/blog/Blog')
+    },
+    post: {
+        path: '/blog/:name',
+        method: 'get',
+        page: 'post',
+        title: 'Blog Post',
+        handler: require('../components/blog/Post'),
+        action: require('../actions/getPost')
     },
     contact: {
         path: '/contact',

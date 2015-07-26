@@ -16,7 +16,7 @@ var Application = React.createClass({
             <div className="o-site-container">
                 <Header />
                 <div className="o-site-content">
-                    <Handler />
+                    <Handler  />
                 </div>
                 <Footer />
             </div>
