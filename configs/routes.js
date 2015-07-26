@@ -4,13 +4,20 @@ module.exports = {
         method: 'get',
         page: 'home',
         title: 'Home',
-        handler: require('../components/Home')
+        handler: require('../components/home/Home')
     },
-    about: {
-        path: '/about',
+    blog: {
+        path: '/blog',
         method: 'get',
-        page: 'about',
-        title: 'About',
-        handler: require('../components/About')
+        page: 'blog',
+        title: 'Blog',
+        handler: require('../components/blog/Blog')
+    },
+    contact: {
+        path: '/contact',
+        method: 'get',
+        page: 'contact',
+        title: 'Contact',
+        handler: require('../components/tempContact')
     }
 };

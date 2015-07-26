@@ -1,9 +1,8 @@
 /*globals document*/
 
 var React = require('react');
-var Nav = require('./Nav');
-var Home = require('./Home');
-var About = require('./About');
+var Header = require('./Header');
+var Footer = require('./Footer');
 var ApplicationStore = require('../stores/ApplicationStore');
 var provideContext = require('fluxible/addons/provideContext');
 var connectToStores = require('fluxible/addons/connectToStores');
@@ -16,7 +15,9 @@ var Application = React.createClass({
         return (
             <div className="o-site-container">
                 <Header />
-                <Handler />
+                <div className="o-site-content">
+                    <Handler />
+                </div>
                 <Footer />
             </div>
         );

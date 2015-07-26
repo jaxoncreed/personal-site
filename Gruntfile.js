@@ -11,7 +11,7 @@ module.exports = function (grunt) {
             app: {
                 script: './start.js',
                 options: {
-                    ignore: ['public/js'],
+                    ignore: ['public'],
                     ext: 'js'
                 }
             }

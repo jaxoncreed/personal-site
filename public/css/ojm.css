@@ -1,7 +1,109 @@
+/* If you ever implement Less, here are some standard things:
+ - Site header colours: #444444
+ - content colour: #EEEEEE;
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,700,400);
+
+html {
+    height: 100%; 
+    margin: 0px; 
+    padding: 0px;
+}
+
 body {
     height: 100%;
     margin: 0px;
     padding: 0px;
+    background-color: #444444;
+    -webkit-appearance:none;
+    font-family: 'Open Sans', sans-serif;
 }
 
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+/* CSS Reset (kind of) */
+h1 {
+    margin: 0px;
+    font-weight: 300;
+}
+p {
+    margin: 0px;
+}
+
+/* Overarching UI */
+
+.o-site-container {
+    position: relative;
+    min-height: 100%;
+    background-color: #EEEEEE;
+}
+
+.o-site-header {
+    position: relative;
+    background-color: #444444;
+    height: 70px;
+}
+
+.o-site-content {
+    position: relative;
+}
+
+.o-site-footer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: -200px;
+    height: 200px;
+    background-color: #444444;
+}
+
+/* Circle Button */
+.o-circle-button {
+    width: 100px;
+    height: 100px;
+    background-color: #666666;
+    border-radius: 50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color: #000000;
+}
+
+/* Header */
+.o-site-header h1 {
+    line-height:70px;
+    height:70px;
+    margin-left: 15px;
+    color: #EEEEEE;
+    text-decoration: none;
+}
+
+.o-site-header .logo {
+    position: relative;
+    height: 100%;
+    float: left;
+}
+
+.o-site-header .nav {
+    height: 100%;
+    float: right;
+    right: 0px;
+    overflow: hidden;
+}
+
+.o-site-header .nav .o-circle-button {
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 150px;
+    width: 150px;
+    margin-top: -40px;
+}
 
