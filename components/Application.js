@@ -8,6 +8,8 @@ var provideContext = require('fluxible/addons/provideContext');
 var connectToStores = require('fluxible/addons/connectToStores');
 var handleHistory = require('fluxible-router').handleHistory;
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Application = React.createClass({
     render: function() {
         var Handler = this.props.currentRoute.get('handler');
@@ -16,7 +18,9 @@ var Application = React.createClass({
             <div className="o-site-container">
                 <Header />
                 <div className="o-site-content">
-                    <Handler  />
+                    <ReactCSSTransitionGroup transitionName="hometransition" transitionAppear={true}>
+                        <Handler key={this.props.pageTitle}  />
+                    </ReactCSSTransitionGroup>
                 </div>
                 <Footer />
             </div>

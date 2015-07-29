@@ -27,7 +27,7 @@ server.use(function(req, res, next) {
     debug('Executing navigate action');
     context.getActionContext().executeAction(navigateAction, {
         url: req.url
-    }, (err) => {
+    }, "InitialNav", function(err) {
         if (err) {
             if (err.statusCode && err.statusCode === 404) {
                 next();
