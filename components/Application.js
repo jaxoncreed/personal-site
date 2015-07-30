@@ -18,9 +18,7 @@ var Application = React.createClass({
             <div className="o-site-container">
                 <Header />
                 <div className="o-site-content">
-                    <ReactCSSTransitionGroup transitionName="hometransition" transitionAppear={true}>
-                        <Handler key={this.props.pageTitle}  />
-                    </ReactCSSTransitionGroup>
+                    <Handler key={this.props.pageTitle}  />
                 </div>
                 <Footer />
             </div>
@@ -47,6 +45,4 @@ module.exports = handleHistory(provideContext(connectToStores(
             pages: appStore.getPages()
         };
     }
-), {
-    meep: React.PropTypes.func
-}));
+)));
