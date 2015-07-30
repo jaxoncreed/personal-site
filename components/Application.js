@@ -47,4 +47,6 @@ module.exports = handleHistory(provideContext(connectToStores(
             pages: appStore.getPages()
         };
     }
-)));
+), {
+    meep: React.PropTypes.func
+}));

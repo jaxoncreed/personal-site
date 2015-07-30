@@ -1,5 +1,7 @@
 var React = require('react');
-var NavLink = require('fluxible-router').NavLink; 
+var NavLink = require('fluxible-router').NavLink;
+var NavigateAction = require('fluxible-router').navigateAction;
+var CircleButton = require('./ui/CircleButton');
 
 var Header = React.createClass({
     render: function() {
@@ -11,12 +13,12 @@ var Header = React.createClass({
                     </NavLink>
                 </div>
                 <nav className="nav">
-                    <NavLink href="/blog">
-                        <div className="o-circle-button">Blog</div>
-                    </NavLink>
-                    <NavLink href="/contact">
-                        <div className="o-circle-button">Contact</div>
-                    </NavLink>
+                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/blog"}} actionId="NavigateBlog">
+                        Blog
+                    </CircleButton>
+                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/contact"}} actionId="NavigateContact">
+                        Contact
+                    </CircleButton>
                     <div className="clear"></div>
                 </nav>
                 <span className="clear"></span>
