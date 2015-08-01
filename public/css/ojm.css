@@ -36,6 +36,8 @@ a:link, a:visited, a:hover, a:active {
     position: relative;
     min-width: 350px;
     max-width: 800px;
+    padding: 30px;
+
     margin: auto;
 }
 .bottom-right {
@@ -49,9 +51,6 @@ a:link, a:visited, a:hover, a:active {
 h1 {
     margin: 0px;
     font-weight: 300;
-}
-p {
-    margin: 0px;
 }
 
 /* Overarching UI */

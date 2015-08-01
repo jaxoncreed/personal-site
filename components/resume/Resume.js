@@ -1,5 +1,4 @@
 var React = require('react');
-//var ResumeDisplay = require('ResumeDisplay');
 
 var Resume = React.createClass({
     render: function() {
