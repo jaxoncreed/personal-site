@@ -1,6 +1,9 @@
 /* If you ever implement Less, here are some standard things:
- - Site header colours: #444444
  - content colour: #EEEEEE;
+
+
+
+ - Header: #3D9AD1;
 */
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,700,400);
@@ -14,7 +17,7 @@ body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: #444444;
+    background-color: #3D9AD1;
     -webkit-appearance:none;
     font-family: 'Open Sans', sans-serif;
 }
@@ -35,6 +38,12 @@ a:link, a:visited, a:hover, a:active {
     max-width: 800px;
     margin: auto;
 }
+.bottom-right {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 500;
+}
 
 /* CSS Reset (kind of) */
 h1 {
@@ -50,13 +59,14 @@ p {
 .o-site-container {
     position: relative;
     min-height: 100%;
-    background-color: #EEEEEE;
+    background-color: #DDD;
 }
 
 .o-site-header {
     position: relative;
-    background-color: #444444;
+    background-color: #3D9AD1;
     height: 70px;
+    z-index: 100;
 }
 
 .o-site-content {
@@ -67,26 +77,30 @@ p {
     position: absolute;
     left: 0px;
     right: 0px;
-    bottom: -200px;
-    height: 200px;
-    background-color: #444444;
+    bottom: -100px;
+    height: 100px;
+    background-color: #3D9AD1;
+    box-sizing: border-box;
+    padding: 40px;
+    color: #EEEEEE;
+    z-index: 100;
 }
 
 /* Circle Button */
 .o-circle-button {
     width: 100px;
     height: 100px;
-    background-color: #666666;
+    background-color: #64A8D1;
     border-radius: 50%;
     display:flex;
     justify-content:center;
     align-items:center;
     color: #000000;
-    transition: all 0.25s ease-in;
+    transition: all 0.15s ease-in;
 }
 .o-circle-button:hover {
     color: #EEEEEE;
-    background-color: #333333;
+    background-color: #03436A;
 }
 
 /* Header */
@@ -108,16 +122,15 @@ p {
     height: 100%;
     float: right;
     right: 0px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .o-site-header .nav .o-circle-button {
     float: left;
     margin-right: 10px;
     margin-left: 10px;
-    height: 150px;
-    width: 150px;
-    margin-top: -40px;
+    margin-top: -15px;
+    cursor: pointer;
 }
 
 /* Home */
@@ -126,6 +139,8 @@ p {
     width: 100%;
     height: 600px;
     background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     background-size: cover;
     padding-top: 200px;
 }
@@ -142,23 +157,19 @@ p {
 
 }
 
-
-.hometransition-enter {
-    opacity: 0;
+/* Resume */
+.resume-container {
+    width: 100%;
+    position: relative;
+    height: 1035px;
 }
-.hometransition-enter.hometransition-enter-active {
-    opacity: 1;
-    transition: all .5s ease-in;
+.resume-object {
+    position:absolute;
+    left:50%;
+    margin-left:-400px;
+    width:800px;
+    height:1035px;
 }
-.hometransition-leave {
-    opacity: 1;
-}
-.hometransition-leave.hometransition-leave-active {
-    opacity: 0.01;
-    transition: all .5s ease-in;
-}
-
-
 
 
 

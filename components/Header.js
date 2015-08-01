@@ -13,6 +13,9 @@ var Header = React.createClass({
                     </NavLink>
                 </div>
                 <nav className="nav">
+                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/resume"}} actionId="NavigateBlog">
+                        Resume
+                    </CircleButton>
                     <CircleButton action={NavigateAction} payload={{method:"GET", url:"/blog"}} actionId="NavigateBlog">
                         Blog
                     </CircleButton>

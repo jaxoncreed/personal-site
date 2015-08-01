@@ -6,6 +6,13 @@ module.exports = {
         title: 'Home',
         handler: require('../components/home/Home')
     },
+    resume: {
+        path: '/resume',
+        method: 'get',
+        page: 'resume',
+        title: 'Resume',
+        handler: require('../components/resume/Resume')
+    },
     blogList: {
         path: '/blog',
         method: 'get',
