@@ -10,6 +10,7 @@ var Html = React.createClass({
                 <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
                 <meta name="viewport" content="width=device-width, user-scalable=no" />
                 <link rel="stylesheet" href="/public/css/ojm.css" />
+                <link rel="icon" type="image/png" href="/public/images/favicon.png" />
             </head>
             <body>
                 <span id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></span>

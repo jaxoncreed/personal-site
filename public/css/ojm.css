@@ -144,8 +144,8 @@ h1 {
     padding-top: 200px;
 }
 .home-splash h1, .home-splash h3 {
-    color: #111111;
-    text-shadow: 0px 0px 30px #FFFFFF;
+    color: #EEEEEE;
+    text-shadow: 0px 0px 30px #000000;
 }
 .home-splash a {
     text-decoration: underline;
@@ -170,6 +170,19 @@ h1 {
     height:1035px;
 }
 
+/* Blog */
+.blogListItem {
+    width: 100%;
+    background-color: #FFF;
+    height: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.blogCenter {
+    width: 800px;
+    margin: auto;
+    padding: 20px;
+}
 
 
 

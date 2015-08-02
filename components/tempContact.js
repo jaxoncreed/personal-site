@@ -9,6 +9,9 @@ var Home = React.createClass({
                     <strong>Email:</strong> jaxoncreed@gmail.com
                 </p>
                 <p>
+                    <strong>Phone:</strong> 678-699-9704
+                </p>
+                <p>
                     <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jacksoncmorgan">linkedin.com/in/jacksoncmorgan</a>
                 </p>
                 <p>

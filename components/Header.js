@@ -16,7 +16,7 @@ var Header = React.createClass({
                     <CircleButton action={NavigateAction} payload={{method:"GET", url:"/resume"}} actionId="NavigateBlog">
                         Resume
                     </CircleButton>
-                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/blog"}} actionId="NavigateBlog">
+                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/blog"}} actionId="NavigateContact">
                         Blog
                     </CircleButton>
                     <CircleButton action={NavigateAction} payload={{method:"GET", url:"/contact"}} actionId="NavigateContact">

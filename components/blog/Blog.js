@@ -9,9 +9,11 @@ var Blog = React.createClass({
                 {Object.keys(blogMap).map(function(key) {
                     return (
                         <NavLink href={"/blog/" + key}>
-                            <div key={key}>
-                                <h1>{blogMap[key].title}</h1>
-                                <p>{blogMap[key].summary}</p>
+                            <div key={key} className="blogListItem">
+                                <div className="blogCenter">
+                                    <h1>{blogMap[key].title}</h1>
+                                    <p>{blogMap[key].summary}</p>
+                                </div>
                             </div>
                         </NavLink>
                     )
