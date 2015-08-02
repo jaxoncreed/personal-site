@@ -179,9 +179,10 @@ h1 {
 .blogListItem {
     width: 100%;
     background-color: #FFF;
-    height: 150px;
     margin-top: 30px;
     margin-bottom: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .blogCenter {
     width: 800px;
@@ -199,7 +200,7 @@ h1 {
     background-color: #0969A2;
     color: #EEEEEE;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 .blogBackgroundDiv {
     background-color: #FFFFFF;
@@ -209,6 +210,7 @@ h1 {
     bottom: 0px;
     margin-left:-400px;
     left:50%;
+    z-index: 0;
 }
 .blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p {
     position: relative;
@@ -219,6 +221,15 @@ h1 {
 }
 .blogPostContainer a {
     text-decoration: underline;
+}
+.blogPostContainer img {
+    margin-top: 500px;
+    position: relative;
+    z-index: 5;
+    display: block;
+    margin: auto;
+    max-width: 760px;
+    border-radius: 5px;
 }
 
 

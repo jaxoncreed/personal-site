@@ -5,12 +5,14 @@
 module.exports = {
     "fluxiblemaster": {
         title: "Building a Site Using Isomorphic Flux with Fluxible",
-        summary: "This is a summary.",
-        component: require('./fluxibleMaster')
+        summary: "A pretty complete guide to Fluxible, and implementation of Facebook’s Flux Design Pattern developed by Yahoo. Fluxible allows you to build Single Page Applications that are rendered on the server, while sharing the same code between client and server.",
+        component: require('./fluxibleMaster'),
+        date: "August 2015"
     },
     "asyncfunctions" : {
         title: "Asynchonous Functions in JavaScript",
-        summary: "This is a summary.",
-        component: require('./asyncFunctions')
+        summary: "We’re starting off the blog with a very simple guide to JavaScript’s async functions. Some get held up on them, but there’s no need to worry. They’re pretty simple, when you focus on just the async part.",
+        component: require('./asyncFunctions'),
+        date: "July 2015"
     }
 }
