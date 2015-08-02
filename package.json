@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "webpack & webpack --config webpack.config.production.js",
+    "start": "node start.js",
     "dev": "grunt",
     "lint": "eslint ./*.js ./**/*.js"
   },
