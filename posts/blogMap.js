@@ -3,12 +3,12 @@
 // I know setting up a database is easy... shut up. I'll do it later.
 
 module.exports = {
-    "fluxible-master": {
+    "fluxiblemaster": {
         title: "Building a Site Using Isomorphic Flux with Fluxible",
         summary: "This is a summary.",
         component: require('./fluxibleMaster')
     },
-    "async-functions" : {
+    "asyncfunctions" : {
         title: "Asynchonous Functions in JavaScript",
         summary: "This is a summary.",
         component: require('./asyncFunctions')

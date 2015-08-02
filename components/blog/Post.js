@@ -5,12 +5,18 @@ var connectToStores = require('fluxible/addons/connectToStores');
 
 var Post = React.createClass({
     render: function() {
-        var Component = this.props.component
+        var Component = this.props.component;
         return (
-            <div>
-                <h1>Post</h1>
+            <article className="blogPostContainer">
+                <div className="blogBackgroundDiv"></div>
+                <header className="blogPostHeader">
+                    <div className="blogCenter">
+                        <h1>{this.props.title}</h1>
+                        <p>{this.props.summary}</p>
+                    </div>
+                </header>
                 <Component />
-            </div>
+            </article>
         );
     }
 });
@@ -20,9 +26,10 @@ module.exports = connectToStores(
     [PostStore],
     {
         PostStore: function (store) {
-            console.log("here");
             return {
-                component: store.getComponent()
+                component: store.getComponent(),
+                title: store.getTitle(),
+                summary: store.getSummary()
             };
         },
     }

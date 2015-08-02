@@ -57,7 +57,7 @@ h1 {
 
 .o-site-container {
     position: relative;
-    min-height: 100%;
+    bottom 0px;
     background-color: #DDD;
 }
 
@@ -70,6 +70,7 @@ h1 {
 
 .o-site-content {
     position: relative;
+    min-height: 100%;
 }
 
 .o-site-footer {
@@ -171,6 +172,10 @@ h1 {
 }
 
 /* Blog */
+.blogContainer {
+    padding-bottom: 1px;
+    min-height: 800px;
+}
 .blogListItem {
     width: 100%;
     background-color: #FFF;
@@ -184,7 +189,37 @@ h1 {
     padding: 20px;
 }
 
+/* Blog Post */
 
+.blogPostContainer {
+    padding-bottom: 30px;
+    min-height: 800px;
+}
+.blogPostHeader {
+    background-color: #0969A2;
+    color: #EEEEEE;
+    position: relative;
+    margin-bottom: 10px;
+}
+.blogBackgroundDiv {
+    background-color: #FFFFFF;
+    width: 800px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin-left:-400px;
+    left:50%;
+}
+.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p {
+    position: relative;
+    width: 760px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 1em;
+}
+.blogPostContainer a {
+    text-decoration: underline;
+}
 
 
 

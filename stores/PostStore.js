@@ -40,9 +40,9 @@ var PostStore = createStore({
     },
     rehydrate: function(state) {
         this.name = state.name;
-        this.title = blogMap[name].title;
-        this.summary = blogMap[name].summary;
-        this.component = blogMap[name].component;
+        this.title = blogMap[this.name].title;
+        this.summary = blogMap[this.name].summary;
+        this.component = blogMap[this.name].component;
     }
 });
 
