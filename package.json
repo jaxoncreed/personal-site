@@ -6,7 +6,8 @@
     "build": "webpack & webpack --config webpack.config.production.js",
     "start": "node start.js",
     "dev": "grunt",
-    "lint": "eslint ./*.js ./**/*.js"
+    "lint": "eslint ./*.js ./**/*.js",
+    "test": "./node_modules/.bin/mocha ./test --recursive"
   },
   "dependencies": {
     "babel": "^5.4.7",
@@ -37,6 +38,7 @@
     "grunt-nodemon": "^0.4.0",
     "grunt-webpack": "^1.0.8",
     "json-loader": "~0.5.1",
+    "mocha": "^2.2.5",
     "nodemon": "^1.2.1",
     "webpack": "^1.4.12",
     "webpack-dev-server": "^1.6.5"

@@ -5,7 +5,7 @@
 module.exports = {
     "fluxiblemaster": {
         title: "Building a Site Using Isomorphic Flux with Fluxible",
-        summary: "A pretty complete guide to Fluxible, and implementation of Facebook’s Flux Design Pattern developed by Yahoo. Fluxible allows you to build Single Page Applications that are rendered on the server, while sharing the same code between client and server.",
+        summary: "A complete guide to Fluxible, an implementation of Facebook’s Flux Design Pattern developed by Yahoo. Fluxible allows you to build Single Page Applications that are rendered on the server, while sharing the same code between client and server.",
         component: require('./fluxibleMaster'),
         date: "August 2015"
     },
