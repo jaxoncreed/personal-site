@@ -4,7 +4,7 @@ var AsyncFunctions = React.createClass({
     render: function() {
         return (
             <div>
-                <p>Let’s start out this blog series with something simple. One of when teaching other developers about JavaScript, I’ve found that one of the strangest things for them is asynchronous functions. But, so many modern frameworks use them, that it's almost impossible to touch JavaScript without using async functions, so let's get into it:</p>
+                <p>Let’s start out this blog series with something simple. When teaching other developers about JavaScript, I’ve found that one of the strangest things for them is asynchronous functions. But, so many modern frameworks use them, that it's almost impossible to touch JavaScript without using async functions, so let's get into it:</p>
                 
                 <h1>How they're done</h1>
                 
