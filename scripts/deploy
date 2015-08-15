@@ -1,0 +1,11 @@
+#!/bin/sh
+ 
+ssh jmorgan@104.131.23.52 <<EOF
+  cd ~/personal-site
+  git pull
+  npm install
+  pm2 restart all
+  exit
+EOF
+
+#Yep, that's super secure!
