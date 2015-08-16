@@ -4,14 +4,13 @@ var React = require('react');
 var Header = require('./Header');
 var Footer = require('./Footer');
 var ApplicationStore = require('../stores/ApplicationStore');
-var provideContext = require('fluxible/addons/provideContext');
-var connectToStores = require('fluxible/addons/connectToStores');
+var connectToStores = require("fluxible-addons-react").connectToStores;
+var provideContext = require('fluxible-addons-react').provideContext;
 var handleHistory = require('fluxible-router').handleHistory;
-
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var Application = React.createClass({
     render: function() {
+
         var Handler = this.props.currentRoute.get('handler');
 
         return (
@@ -37,8 +36,8 @@ var Application = React.createClass({
 module.exports = handleHistory(provideContext(connectToStores(
     Application,
     [ApplicationStore],
-    function (stores, props) {
-        var appStore = stores.ApplicationStore;
+    function (context, props) {
+        var appStore = context.getStore(ApplicationStore);
         return {
             currentPageName: appStore.getCurrentPageName(),
             pageTitle: appStore.getPageTitle(),

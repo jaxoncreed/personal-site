@@ -16,7 +16,7 @@ var Html = React.createClass({
                 <span id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></span>
             </body>
             <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-            <script src="/public/js/main.js"></script>
+            <script src={'/public/js/' + this.props.clientFile}></script>
             </html>
         );
     }

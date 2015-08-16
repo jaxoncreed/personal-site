@@ -2,6 +2,7 @@
 
 var React = require('react');
 var debug = require('debug');
+var createElementWithContext = require('fluxible-addons-react').createElementWithContext;
 var app = require('./app');
 
 var debugClient = debug('fluxible-template');
@@ -24,7 +25,10 @@ app.rehydrate(dehydratedState, function (err, context) {
     var mountNode = document.getElementById('app');
 
     debugClient('React Rendering');
-    React.render(context.createElement(), mountNode, function () {
-        debugClient('React Rendered');
-    });
+    React.render(
+        createElementWithContext(context),
+        mountNode, function () {
+            debugClient('React Rendered');
+        }
+    );
 });

@@ -1,7 +1,7 @@
 var React = require('react');
 var blogMap = require('../../posts/blogMap');
 var PostStore = require('../../stores/PostStore');
-var connectToStores = require('fluxible/addons/connectToStores');
+var connectToStores = require("fluxible-addons-react").connectToStores;
 
 var Post = React.createClass({
     render: function() {
@@ -29,13 +29,11 @@ var Post = React.createClass({
 module.exports = connectToStores(
     Post,
     [PostStore],
-    {
-        PostStore: function (store) {
-            return {
-                component: store.getComponent(),
-                title: store.getTitle(),
-                summary: store.getSummary()
-            };
-        },
+    function (context, props) {
+        return {
+            component: context.getStore(PostStore).getComponent(),
+            title: context.getStore(PostStore).getTitle(),
+            summary: context.getStore(PostStore).getSummary()
+        }
     }
 );
