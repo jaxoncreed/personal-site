@@ -212,7 +212,7 @@ h1 {
     left:50%;
     z-index: 0;
 }
-.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p {
+.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre {
     position: relative;
     width: 760px;
     margin: auto;
@@ -230,6 +230,13 @@ h1 {
     margin: auto;
     max-width: 760px;
     border-radius: 5px;
+}
+.blogPostContainer pre {
+    background-color: #272822;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 

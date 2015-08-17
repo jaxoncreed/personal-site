@@ -19,10 +19,14 @@ var env = process.env.NODE_ENV;
 
 var debug = debugLib('fluxible-template');
 
+/* Regeister Services */
+app.getPlugin('FetchrPlugin').registerService(require('./services/postsService'));
+
 var server = express();
 server.set('state namespace', 'App');
 server.use('/public', express.static(path.join(__dirname, '/public')));
 server.use(compression());
+server.use(app.getPlugin('FetchrPlugin').getXhrPath(), app.getPlugin('FetchrPlugin').getMiddleware());
 
 server.use(function(req, res, next) {
     var context = app.createContext();

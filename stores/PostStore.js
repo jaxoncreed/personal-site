@@ -12,13 +12,15 @@ var PostStore = createStore({
         this.name = null;
         this.title = null;
         this.summary = null;
-        this.component = null;
+        this.date = null;
+        this.html = null;
     },
-    handlePostReceived: function(name) {
-        this.name = name;
-        this.title = blogMap[name].title;
-        this.summary = blogMap[name].summary;
-        this.component = blogMap[name].component;
+    handlePostReceived: function(post) {
+        this.name = post.name;
+        this.title = post.title;
+        this.summary = post.summary;
+        this.date = post.date;
+        this.html = post.html;
         this.emitChange();
     },
     getName: function() {
@@ -30,19 +32,27 @@ var PostStore = createStore({
     getSummary: function() {
         return this.summary;
     },
-    getComponent: function() {
-        return this.component;
+    getDate: function() {
+        return this.date;
+    },
+    getHtml: function() {
+        return this.html;
     },
     dehydrate: function() {
         return {
-            name: this.name
+            name: this.name,
+            title: this.title,
+            summary: this.summary,
+            date: this.date,
+            html: this.html
         };
     },
     rehydrate: function(state) {
         this.name = state.name;
-        this.title = blogMap[this.name].title;
-        this.summary = blogMap[this.name].summary;
-        this.component = blogMap[this.name].component;
+        this.title = state.title;
+        this.summary = state.summary;
+        this.date = state.date;
+        this.html = state.html;
     }
 });
 
