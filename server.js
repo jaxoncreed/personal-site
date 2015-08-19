@@ -20,7 +20,7 @@ var env = process.env.NODE_ENV;
 var debug = debugLib('fluxible-template');
 
 /* Regeister Services */
-app.getPlugin('FetchrPlugin').registerService(require('./services/postsService'));
+app.getPlugin('FetchrPlugin').registerService(require('./services/PostsService'));
 
 var server = express();
 server.set('state namespace', 'App');
