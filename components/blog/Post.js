@@ -1,13 +1,18 @@
 var React = require('react');
 var blogMap = require('../../posts/blogMap');
 var PostStore = require('../../stores/PostStore');
+var NavLink = require('fluxible-router').NavLink;
 var connectToStores = require("fluxible-addons-react").connectToStores;
 
 var Post = React.createClass({
     render: function() {
-        // Hack: Why is the store not populating?
         return (
             <article className="blogPostContainer">
+                <NavLink href="/contact">
+                    <div className="o-circle-button bottom-right">
+                        <span style={{textAlign: "center", fontSize: "90%"}}>Comments & Questions</span>
+                    </div>
+                </NavLink>
                 <div className="blogBackgroundDiv"></div>
                 <header className="blogPostHeader">
                     <div className="blogCenter">

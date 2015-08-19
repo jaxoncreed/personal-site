@@ -212,7 +212,7 @@ h1 {
     left:50%;
     z-index: 0;
 }
-.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre {
+.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre, .blogPostContainer ul {
     position: relative;
     width: 760px;
     margin: auto;
@@ -237,9 +237,11 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+    overflow-x: auto; 
 }
-
-
+.blogPostContainer pre strong {
+    color: green;
+}
 
 
 

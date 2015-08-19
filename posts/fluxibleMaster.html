@@ -4,11 +4,11 @@
 
 <p>Fluxible is pretty awesome, and once you get past the learning curve, you can start easily building very scalable web applications. In this tutorial, I try to provide you all the tools you need to succeed using fluxible, and thus the size of this document is a bit large. I've also provided a github repo that you can use to follow along with this tutorial.</p>
 
-<h1>Why Should I Use Fluxible</h1>
+<h2>Why Should I Use Fluxible</h2>
 
 <p>”Yeah, why can’t I just slap a few HTML files together and throw it up on an Apache server somewhere, and call it done?” Well, you could, and you could also use Squarespace to make your site. When you’re building a site with Fluxible, you’re going beyond what’s required for a group of web-pages. You’re not building a website, you’re building a web-app.</p>
 
-<h2>Fluxible Builds Single Page Applications</h2>
+<h3>Fluxible Builds Single Page Applications</h3>
 
 <p>To understand the importance of Single Page Applications, here’s a history lesson! When the web started it really was just a bunch of html files that were requested by web browsers. Then we got a little smarter and said, “Hey, what if instead of having a bunch of these files lying around on our servers, our servers dynamically built an HTML document and pretended like it was an HTML file. It’s all the same to the web browser.” And, with that in mind, we were able to build pages that populated themselves with data and forms that could post information. But, everything was still treated as individual pages.</p>
 
@@ -20,7 +20,7 @@
 
 <p>There are a ton of frameworks out there that allow you to build SPAs, though (React, Other Flux Implementations, Angular, Meteor, Backbone, Ember...), so now let’s see what differentiates Fluxible from these</p>
 
-<h2>Fluxible Allows Server-Side Rendering</h2>
+<h3>Fluxible Allows Server-Side Rendering</h3>
 
 <p>A big problem that comes with SPAs is that they use JavaScript to construct the page in the user’s web browser. This can cause a performance hit for the user depending on how powerful his/her computer is, and the performance problem isn’t the user’s problem. Imagine if Google said, “Hey, we know loading Gmail’s slow to load, but we’ve got an awesome work-around. Get a better computer! Preferably one where you don’t have a bunch of toolbars you never use taking up half the screen space on your web browser!”</p>
 
@@ -28,14 +28,14 @@
 
 <p>The solution to both of these problems is server-side rendering. Instead of the server saying, “Here’s a complete web-page. Call me again when you want something new,” like it does in Multi Page Applications, or saying, “Here’s a page with a bunch of JavaScript. You figure it out,” like it does for many SPA applications, server-side rendering allows the server to say, “Hey you know all that JavaScript I would have asked you to run to build the HTML to load our first view? Yeah, I ran it already. Here’s the HTML! Oh, and here’s a bunch of JavaScript for you to run after the page is loaded.” Now we get the benefits of having a Single Page Application while not suffering a performance hit on initial load or confusing crawlers.</p>
 
-<h2>Fluxible is Isomorphic</h2>
+<h3>Fluxible is Isomorphic</h3>
 
 <p>But, server side rendering poses a new problem. Now I could be rendering my site on either the client or the server, so I need to write different code depending on the environment, right? Well, not with Fluxible. It’s Isomorphic, meaning that the same code that’s written for the server is used on the client, so you’re development can be much faster!</p>
 
-<h2>Fluxible Supports Plugins</h2>
+<h3>Fluxible Supports Plugins</h3>
 <p>Finally, if you become adept with fluxible, you can start writing plugins pretty easily</p>
 
-<h1>Okay, now What’s Flux?</h1>
+<h2>Okay, now What’s Flux?</h2>
 
 <p>Before you start using Fluxible, it’s pretty important to understand the flux design pattern. Put simply, Flux is a design pattern by Facebook that organizes information flow throughout your application into a single direction. Put complexly:</p>
 
@@ -45,29 +45,29 @@
 
 <p>Of course, the implementation is a bit more complex than that, and the various implementations of flux do it differently. So, let’s take a look at the way Fluxible tackles each of these.</p>
 
-<h2>Actions</h2>
+<h3>Actions</h3>
 
 <p>Actions are exactly as they’re named. They’re responsible for action doing something. Keep in mind that actions only manipulate data. They don’t alter what’s stored or what’s displayed. That’s the responsibility of the other items.</p>
 
-<h2>Dispatcher</h2>
+<h3>Dispatcher</h3>
 
 <p>When working with Fluxible, you don’t need to worry about the dispatcher very much as it’s abstracted by the framework. But, in short, when actions are done manipulating their data, they will “dispatch” an event. The dispatcher is responsible for transferring that data to all the stores that are listening to that event.</p>
 
-<h2>Stores</h2>
+<h3>Stores</h3>
 
 <p>Stores are responsible for… storing all the data handled by the application. They simply take in the data provided by an action and update their model. When stores are updated, they will “emit change” to indicate to any Views listening that the store has updated.</p>
 
-<h2>Views</h2>
+<h3>Views</h3>
 
 <p>Views handle displaying information to the user. While the flux views could be implemented with many frameworks, because flux is Facebook’s, views usually implemented using Facebook’s React <strong>Components</strong> (from here on out, we’ll refer to the views as “components”). This remains true with Fluxible. Components are able to listen to various Stores and update when the Stores update. They’re also able to trigger Actions.</p>
 
-<h2>Services</h2>
+<h3>Services</h3>
 
 <p>Fluxible has one other item that’s pretty useful: services. Actions, the Dispatcher, Stores, and Views are all shared between the client and server, but there are some things that should only ever be done on the server, like database lookups and http requests to external servers.</p>
 
 <p>Think of services like an extension of an action that always lives on the server. Actions will make requests to it. Once it receives a response, the flux flow continues as normal.</p>
 
-<h1>Getting Started - Installing Prerequisites</h1>
+<h2>Getting Started - Installing Prerequisites</h2>
 
 <p>Assuming you're starting with a completely clean slate, there are a few things you need to install:</p>
 
@@ -80,4 +80,763 @@
  $ npm -v 
 </pre>
 
-<p>Work in Progress... See the full post <a href="http://jacksoncmorgan.blogspot.com/" target="_blank">here</a>.</p>
+<p>If everything's working you should see some version numbers printed.</p>
+
+<p>Also be sure that you’ve installed <a href="http://git-scm.com/" target="_blank">git</a>. Run this to ensure that it’s properly installed:</p>
+
+<pre>
+ $ git --version
+</pre> 
+
+<h2>Generating your Project</h2>
+
+<p>The fluxible creators were nice enough to provide us with <a href="https://github.com/yahoo/generator-fluxible" target="_blank">a Yeoman generator made specifically for Fluxible</a>. This will automatically create everything you need to get started with “The Next Facebook.” </p>
+
+<p>However, for the purposes of this tutorial, I'm going to be using a modified version of what's created by the generators. The generators create a project in ES6 syntax, which is an awesome new syntax for JavaScript that makes it convenient to have strongly typed variables and polymorphism. It's something <a href="https://github.com/lukehoban/es6features" target="_blank">great to check out</a>, but this tutorial is on fluxible, not ES6, so I'm going to change everything to the syntax that everyone's probably familiar with.</p>
+
+<p>You can choose to use the generators and follow along with ES6 or I've also created an ES5 version of the generated code in a github repo that you can fork or clone.</p>
+
+<h3>Using the Generator</h3>
+
+<p>Still using the generator? Cool. The generator runs on Yeoman. Yeoman generators help set up project frameworks so that you have something that you can build on out of the box. To install Yeoman run:</p>
+
+<pre>
+ $ npm install -g yo
+</pre>
+
+<p>Note that depending on your system security settings, you might need to give permission to install an npm package globally (on mac and linux machines) by running</p>
+
+<pre>
+ $ sudo npm install yo
+</pre>
+
+<p>Now let’s install the Fluxible generator.</p>
+
+<pre>
+ $ npm install -g generator-fluxible
+</pre>
+
+<p>If that was successful, then it's time to start our project. Use the command line/terminal to navigate into the folder where you want your projects. I have a folder in my root directory called projects, and of course, we'll make a folder for our site called "the-next-facebook."</p>
+
+<pre>
+ $ cd /projects
+ $ mkidr the-next-facebook
+ $ cd the-next-facebook
+</pre>
+
+<p>Now, use Yeoman to generate the project:</p>
+
+<pre>
+ $ yo fluxible
+</pre>
+
+<p>This will generate the project and install all of its dependencies. Now, make sure everything’s working:</p>
+
+<pre>
+ $ npm run dev
+</pre>
+
+<p>Navigate to <strong>http://localhost:3000</strong> in your web-browser and you should see a home page with the option to select an about page.</p>
+
+<h3>Using my Template Repo</h3>
+
+<p>Ah using my repo, then? Okay clone the repo at <a href="https://github.com/jaxoncreed/fluxible-template"  target="_blank">https://github.com/jaxoncreed/fluxible-template</a>. Don't forget to change the origin to your own repo.</p>
+
+<pre>
+ $ git clone https://github.com/jaxoncreed/fluxible-template.git
+ $ git remote remove origin
+ $ git remote add origin [PATH TO YOUR OWN REPO]
+</pre>
+
+<p>Now run npm install to install all the required packages.</p>
+
+<pre>
+ $ npm install
+</pre>
+
+<p>And now, just make sure everything is working by starting the project:</p>
+
+<pre>
+ $ npm run dev
+</pre>
+
+<p>Navigate to <strong>http://localhost:3000</strong> in your web-browser and you should see a home page with the option to select an about page.</p>
+
+<p>All that's left to do is update the readMe and package.json files with the proper name for your project.</p>
+
+<h2>Start Building the Site by Removing Useless Stuff (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/72439d4d2e7a4e44411ecdde04a70b4e1cdb20b2" target="_blank">git diff</a>)</h2>
+
+<img src="/public/images/fluxible/flux1.gif" />
+
+<p>Great! Now that we're through all that stuff, it's time to finally start building our game-changing site. Our goal is simple: usurp the largest social media company in the world by creating The Next Facebook. But, first, the generator created some things that we don't need.</p>
+
+<p>Don't get me wrong, the current version of our site created by the generators (pictured above) is enough to gain you admittance into Y Combinator, but that's not what we're going for. So, let's remove all the stuff we don't need! (view the git diff to see what I've removed)</p>
+
+<h2>Creating Your Own Route (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/49a5b7657d3c6e5b4a4023e2bd0722e9ddda0ca0" target="_blank">git diff</a>)</h2>
+
+<img src="/public/images/fluxible/flux2.png" />
+
+<p>As can be seen by the image above, we're already well on our way to making the next internet hit! In this step, we're going to add a new page to our application. Pretty simple.</p>
+
+<p>Let's just start out with a little flavour by adding the title "Welcome to The Next Facebook!" This title's a pretty big value proposition for our site, so we're going to want it to show up on every page.</p>
+
+<p>/components/Application.js</p>
+<pre>
+...
+return (
+    &lt;div&gt;
+        <strong>&lt;h1&gt;Welcome to The Next Facebook!&lt;/h1&gt;</strong>
+        &lt;Handler /&gt;
+    &lt;/div&gt;
+);
+...
+</pre>
+
+<p>Application.js is the highest level of our application and handles the views of the various routes (which are inserted into Handler). As a result, any component or HTML element in Application's render function will always be shown.</p>
+
+<p>Now let's set up a route for the home page. Grabbing users instantly is a must, so we'll direct them strait to a log in page.</p>
+
+<p>/configs/routes.js</p>
+<pre>
+module.exports = {
+    login: {
+        path: '/',
+        method: 'get',
+        page: 'login',
+        title: 'Log In',
+        handler: require('../components/Login')
+    }
+};
+</pre>
+
+<p>All your routes are defined in routes.js. Here we say that when the path is empty, fluxible should render the component located at "../components/Login."</p>
+
+<p>Now we just need to create a Login.js React component to handle this route. Our login page is pretty innovative. In order to achieve maximum product-market fit we'll want to avoid the barrier to entry caused by actually needing to create an account. Instead, on The Next Facebook, users just type a username and they're in!</p>
+
+<p>/components/Login.js</p>
+<pre>
+var React = require('react');  
+
+var Login = React.createClass({  
+    render() {  
+        return (  
+            &lt;div&gt;  
+                &lt;h2&gt;Log In&lt;/h2&gt;  
+                &lt;form&gt;  
+                    &lt;label for=&quot;username&quot;&gt;Username:&lt;/label&gt;  
+                    &lt;input type=&quot;text&quot; /&gt;  
+                    &lt;input id=&quot;username&quot; type=&quot;submit&quot; value=&quot;Log In&quot; /&gt;  
+                &lt;/form&gt;  
+            &lt;/div&gt;
+        );  
+    }  
+});  
+module.exports = Login;
+</pre>
+
+<p>Here we've just created a simple React component to serve as our Login page. If you're not already familiar with React, I highly recommend that you go through a tutorial like <a href="https://facebook.github.io/react/docs/tutorial.html" target="_blank">this one</a>. But to biefly explain, React components are essentially like creating your own HTML tags. The "render" function seen above defines all the HTML elements that go into this component. There are other functions that allow you to write JavaScript to define your component's behaviour. Components can be nested inside of one another, so when you run this site and navigate to <strong>http://localhost:3000</strong>, the router is telling the "Application" component that we are currently on the path with the "handler" at "../components/Login." The "Application" component will then nest the "Login" component in the proper place to render the page.</p>
+
+<h2>Linking to Other Routes (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/73c76969d3552faaa1454189098509620b5b996f" target="_blank">git diff</a>)</h2>
+
+<img src="/public/images/fluxible/flux3.gif">
+
+<p>A site is more than just one page. We need another page for a user's feed, and we need a way to navigate between the two. But, firstly. Let's just set up the second page:</p>
+
+<p>/configs/routes.js</p>
+<pre>
+...    
+    feed: {  
+        path: '/feed',  
+        method: 'get',  
+        page: 'feed',  
+        title: 'Your Feed',  
+        handler: require('../components/Feed')  
+    }
+... 
+</pre>
+
+<p>/components/Feed.js</p>
+<pre>
+var React = require('react');  
+
+var Feed = React.createClass({  
+    render() {  
+        return (  
+            &lt;div&gt;  
+                &lt;h2&gt;Your Constant Feed of Content&lt;/h2&gt;  
+                &lt;p&gt;How original&lt;/p&gt;  
+            &lt;/div&gt; 
+        );  
+    }  
+});  
+module.exports = Feed; 
+</pre>
+
+<p>Okay, we knew how to do that before, but now let's make a nav-bar.</p>
+
+<p>/components/Application.js</p>
+<pre>
+...
+<strong>var NavBar = require('./NavBar');</strong> 
+...  
+    render: function() {  
+        var Handler = this.props.currentRoute.get('handler');  
+        return (  
+            &lt;div&gt;  
+                &lt;h1&gt;Welcome to The Next Facebook!&lt;/h1&gt;  
+                <strong>&lt;NavBar /&gt;</strong>
+                &lt;Handler /&gt;  
+            &lt;/div&gt;  
+        );
+    },
+...  
+</pre>
+
+<p>/components/NavBar.js</p>
+<pre>
+var React = require('react');  
+var NavLink = require('fluxible-router').NavLink; 
+
+var NavBar = React.createClass({  
+    render() {  
+        return (  
+            &lt;p&gt;  
+                &lt;NavLink href=&quot;/&quot;&gt;Home&lt;/NavLink&gt;  
+                &lt;span&gt; - &lt;/span&gt;  
+                &lt;NavLink href=&quot;/feed&quot;&gt;Your Feed&lt;/NavLink&gt;   
+            &lt;/p&gt;  
+        );  
+    }  
+});  
+module.exports = NavBar;  
+</pre>
+
+<p>Notice that the links in NavBar.js use <strong>NavLinks</strong> and not the regular "a" tag. You could certainly achieve the same effect shown above by using an "a" tag, but it would actually be making another call to the server and reloading the entire page, which negates the purpose of a single-page application. It's going to be less efficient and you're not going to leverage a lot of the benefits that come with SPAs.</p>
+
+<p>Instead, a NavLink is an abstraction of the NavigateAction action. So, when you use a NavLink you don't reload the entire page, you simply go through the flux flow to navigate to a new route.</p>
+
+<p>Consequently, you could achieve the same result by simply calling NavigateAction in JavaScript:</p>
+
+<p>/components/NavBar.js</p>
+<pre>
+var React = require('react');  
+<strong>var NavigateAction = require('fluxible-router').navigateAction;</strong>  
+
+var NavBar = React.createClass({  
+    contextTypes: {  
+        executeAction: React.PropTypes.func.isRequired  
+    },  
+    <strong>goToHref: function(href) {  
+        //This is how you execute an action. We'll go into that in detail in the next step 
+        this.context.executeAction(NavigateAction, { 
+            method: "GET",  
+            url: href  
+        });
+    },</strong>
+    render: function() {  
+        return (  
+            &lt;p&gt;  
+                <strong>&lt;span onClick={this.goToHref.bind(this, &quot;/&quot;)}&gt;Home&lt;/span&gt;</strong> 
+                &lt;span&gt; - &lt;/span&gt;  
+                <strong>&lt;span onClick={this.goToHref.bind(this, &quot;/feed&quot;)}&gt;Your Feed&lt;/span&gt;</strong>;
+            &lt;/p&gt;  
+        );  
+    }  
+});  
+module.exports = NavBar; 
+</pre>
+
+<h2>Using your own Actions and Stores</h2>
+
+<p>Now it's time to implement the full flux flow in our project. Recall that in flux, information flows in one direction: Component -> Action -> Dispatcher -> Store -> Component. The dispatcher is abstracted by fluxible and we already know how to build components, so let's learn how to implement actions and stores.</p>
+
+<p>The is the perfect opportunity to finish the log in system of The Next Facebook. To do this we'll need to make an action to log in the user (no need for an action to log out. To make a truly viral site user retention is vital. Why would you let them log out?) and a Store to keep track of the user.</p>
+
+<h3>Create and Execute an Action (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/2a30bff965c031471bed372b8383a5322f1ccb8e" target="_blank">git diff</a>)</h3>
+
+<img src="/public/images/fluxible/flux4.gif" />
+
+<p>We'll start with the first part of the flux flow after the component, the action. But, before we create an action to log in a user, we need to configure our component to initiate the action:</p>
+
+<p>/components/Login.js</p>
+<pre>
+var React = require('react');  
+<strong>var loginAction = require('../actions/login');</strong>
+
+var Login = React.createClass({  
+    <strong>contextTypes: {  
+        executeAction: React.PropTypes.func.isRequired  
+    },  
+    handleLogin: function(element) {  
+        element.preventDefault();  
+        this.context.executeAction(loginAction, {  
+            username: React.findDOMNode(this.refs.username).value.trim()  
+        });  
+    },</strong> 
+    render: function() {  
+        return (  
+            &lt;div&gt;  
+                &lt;h2&gt;Log In&lt;/h2&gt;  
+                &lt;form <strong>onSubmit={this.handleLogin}</strong>&gt;  
+                    &lt;label for=&quot;username&quot;&gt;Username:&lt;/label&gt;  
+                    &lt;input id=&quot;username&quot; type=&quot;text&quot; <strong>ref=&quot;username&quot;</strong> /&gt;  
+                    &lt;input type=&quot;submit&quot; value=&quot;Log In&quot; /&gt;  
+                &lt;/form&gt;  
+            &lt;/div&gt;  
+        );  
+    }  
+});  
+module.exports = Login; 
+</pre>
+
+<p>A lot's been added here. I'll start by explaining the React parts. The <strong>onSubmit</strong> attribute is React's version of the onsubmit attribute in HTML. It triggers a function that we made and passes in the form element as the attribute. By default the form element will reload the page on submit, but because we're building a single-page application, we don't want the page to ever reload. To solve this we call <strong>preventDefault()</strong> on the element that's being passed in. Additionally, we can get the value of a textfield using React's <strong>ref</strong> attribute to find the textfield.</p>
+
+<p>Now for the fluxible elements. <strong>Context</strong> includes the <strong>executeAction</strong> function because we included it among the <stong>contextTypes</strong>. This is how we request actions. ExecuteAction takes two parameters. The <strong>Action</strong> (a function that was required above) and a <strong>Payload</strong>. The payload contains all the information that needs to be passed from the component to the action. In this example, we're executing the action from "/actions/login.js" and passing an object with our username as the payload.</p>
+
+<p>The component's up to date, so now it's time to build the log in action:</p>
+
+<p>/actions/login.js</p>
+<pre>
+module.exports = function (context, payload, callback) {  
+    console.log("Inside the Log In Action!");  
+    console.log("Username: " + payload.username);  
+    context.dispatch('USER_LOGGED_IN', {  
+        username: payload.username  
+    });
+    callback();  
+};
+</pre>
+
+<p>All actions accept three parameters. Firstly, there's the <strong>context</strong>. Context is an <a href="http://fluxible.io/api/actions.html#action-context" target="_blank">actionConext</a> and contains a few useful functions. One of these functions is <strong>dispatch</strong>. Dispatch calls the dispatcher, and we know from the flux flow that the dispatcher will pass on the provided data to the store. In this example, we call the dispatcher, telling it to send the message "USER_LOGGED_IN" for any store listening for that message to handle and we pass our username as the data to send in the second parameter.</p>
+
+<p>Secondly there's the <strong>payload</strong> which is identical to the payload that was provided in the component. Lastly, there's the <strong>callback</strong> which should be called when the action is done. If there's not an error, don't pass any params to callback. If there is, you can send an error message by passing one param.</p>
+
+<p>This action doesn't look very interesting. All we're doing is passing the same information to the store, but later actions in this tutorial will do more complex things. Never pass information to a store directly from the component. Always use an action to do this. It makes your code more understandable and will allow you to reuse that action easily in the future.</p>
+
+<h3>Making your own Store (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/f9287b6a283e5d4e480145898aa207f78a19778f" target="_blank">git diff</a>)</h3>
+
+<img src="/public/images/fluxible/flux5.gif" />
+
+<p>Now it's time to bring it all together with a store:</p>
+
+<p>/stores/UserStore.js</p>
+<pre>
+var createStore = require('fluxible-app/utils/createStore');  
+
+var UserStore = createStore({  
+    storeName: "UserStore",  
+    handlers: {  
+        "USER_LOGGED_IN": "handleUserReceived"  
+    },  
+    initialize: function(dispatcher) {  
+        this.username = null;  
+    },  
+    handleUserReceived: function(payload) {  
+        this.username = payload.username;  
+        this.emitChange();  
+    },  
+    getUsername: function() {  
+        return this.username;  
+    },  
+    dehydrate: function() {  
+        return {  
+            username: this.username  
+        };  
+    },  
+    rehydrate: function(state) {  
+        this.username = state.username;  
+    }  
+});  
+module.exports = UserStore;
+</pre>
+
+<p>When the login action calls context.dispatch("USER_LOGGED_IN", payload), the dispatcher will trigger any stores that have a <strong>handler</strong> to accept "USER_LOGGED_IN." In this example, you can see that we do, in fact, handle "USER_LOGGED_IN" and this maps to the name of the function that will handle the request (handleUserReceived).</p>
+
+<p>In handleUserReceived we update the proper variable. Don't forget to run emitChange() when you're done updating the store. If this isn't called, none of the components will be updated.</p>
+
+<p>getUsername is just a standard getter for the use of components that listen for the store.</p>
+
+<p><strong>Dehydrate</strong> and <strong>rehydrate</strong> are more interesting. When the flux application engages in server-side rendering, the store's variables are up to date on the server, but the same variables must match on the client. In order to send these variables to the client the store is "dehydrated," converting all the important variables into JSON. When the same store is loaded on the client, it needs to get the current value of all its variables. In rehydrate, the JSON sent to the client comes in via "state" and the task is then about setting all the store's variables based on that JSON.</p>
+
+<p>All stores must also be registered with the app. So, let's do that:</p>
+
+<p>/app.js</p>
+<pre>
+var Fluxible = require('fluxible');  
+var Application = require('./components/Application');  
+
+var ApplicationStore = require('./stores/ApplicationStore');  
+var RouteStore = require('./stores/RouteStore');  
+<strong>var UserStore = require('./stores/UserStore');</strong>
+
+// create new fluxible instance  
+var app = new Fluxible({  
+    component: Application  
+});
+
+// register stores  
+app.registerStore(RouteStore);  
+app.registerStore(ApplicationStore);  
+<strong>app.registerStore(UserStore);</strong> 
+
+module.exports = app;  
+</pre>
+
+<p>And finally we can update one of our components to use the information from the UserStore. To show off the power of fluxible, let's update the NavBar, not the Login component. Because the information is in a store, any component can listen to any store. There's no need to worry about passing information between components. The same principal is bound to actions and stores: Any component can listen to any store, any action can be triggered by any component, and any store can handle information dispatched from any action.</p>
+
+<p>/components/NavBar.js</p>
+<pre>
+var React = require('react');  
+var NavLink = require('fluxible-router').NavLink;  
+<strong>var connectToStores = require("fluxible-addons-react").connectToStores; 
+var UserStore = require('../stores/UserStore');</strong>
+
+var NavBar = React.createClass({  
+    render() {  
+        <strong>var loggedInMessage = "";  
+        if (this.props && this.props.username) {  
+            loggedInMessage = (&lt;span&gt; - Welcome &lt;strong&gt;{this.props.username}&lt;/strong&gt;&lt;/span&gt;);  
+        }</strong>
+        return (  
+            &lt;p&gt;  
+                &lt;NavLink href=&quot;/&quot;&gt;Home&lt;/NavLink&gt;  
+                &lt;span&gt; - &lt;/span&gt;  
+                &lt;NavLink href=&quot;/feed&quot;&gt;Your Feed&lt;/NavLink&gt;  
+                <strong>{loggedInMessage}</strong>
+            &lt;/p&gt;  
+        );  
+    }  
+});
+
+module.exports = <strong>connectToStores(  
+    NavBar,  
+    [UserStore],  
+    function (context, props) {
+        return {
+            username: context.getStore(UserStore).getUsername()  
+        }
+    } 
+);</strong> 
+</pre>
+
+<p><strong>connectToStores</strong> is one of a few ways to get a component to listen to a store. It accepts 3 parameters: the component that needs to be connected, an array of stores the component should connect to, and a function to set the props based on the information provided in the store. This information is put into the props of the React element and can be treated like any other props (So, yes, componentWillReceiveProps does work).</p>
+
+<h2>Other Tips and Review</h2>
+
+<p>With that, we've completed the full flux flow with Fluxible, but the tutorial's not over yet. There's still a few other convenient things that fluxible does.</p>
+
+<p>No good social network is without its feed, so let's implement The Next Facebook's feed and use this opportunity to review what we've learned while learning a few more tricks.</p>
+
+<h3>Triggering an Action Upon Page Load (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/8e4db4db8a5a6697e8261afb34bce5b0d14fbbd8" target="_blank">git diff</a>)</h3>
+
+<img src="/public/images/fluxible/flux6.gif" />
+
+<p>Let's set up an Action, Store, and Component for the feed. First, let's create some dummy data to populate the feed... My my, you seem to be aquainted with quite the historical giants!</p>
+
+<p>/dummyData/posts.json</p>
+<pre>
+[  
+    {  
+        "user": "MararetThatcher",  
+        "type": "text",  
+        "message": "OMG. I'm totes cheesed off with Argentina."  
+    },  
+    {  
+        "user": "RichardNixon",  
+        "type": "text",  
+        "message": "Just got totally chirped by Frost. FML"  
+    },  
+    {  
+        "user": "GeorgeWBush",  
+        "type": "image",  
+        "url": "http://4.bp.blogspot.com/-Woa9TTFy77U/VaaJtw9prVI/AAAAAAAACV4/SWvAV0x96c0/s1600/GWBShower.jpg",  
+        "message": "Hey guys, just made a new painting. Hope you like."  
+    },  
+    {  
+        "user": "JPMorgan",  
+        "type": "text",  
+        "message": "Swag money! Just bailed out the US gov doe!"  
+    }  
+]
+</pre>
+
+<p>Now, let's add an action to retrieve this data.</p>
+
+<p>/actions/getPosts.js</p>
+<pre>
+var posts = require('../dummyData/posts.json');
+
+module.exports = function (context, payload, callback) { 
+    context.dispatch('POSTS_RECEIVED', {  
+        posts: posts  
+    });
+    callback();  
+}; 
+</pre>
+
+<p>Now, the store:</p>
+
+<p>/stores/FeedStore.js</p>
+<pre>
+var createStore = require('fluxible-app/utils/createStore');  
+
+var FeedStore = createStore({  
+    storeName: "FeedStore",  
+    handlers: {  
+        "POSTS_RECEIVED": "handlePostsReceived"  
+    },  
+    initialize: function(dispatcher) {  
+        this.posts = [];  
+    },  
+    handlePostsReceived: function(payload) { 
+        this.posts = payload.posts;  
+        this.emitChange();
+    },  
+    getPosts: function() {  
+        return this.posts;  
+    },  
+    dehydrate: function() {  
+        return {  
+            posts: this.posts  
+        };  
+    },  
+    rehydrate: function(state) {  
+        this.posts = state.posts;  
+    }  
+});  
+module.exports = FeedStore;
+</pre>
+
+<p>Register the store with the app</p>
+<pre>
+var Fluxible = require('fluxible');  
+var Application = require('./components/Application');  
+
+var ApplicationStore = require('./stores/ApplicationStore');  
+var RouteStore = require('./stores/RouteStore');  
+var UserStore = require('./stores/UserStore');
+var FeedStore = require('./stores/FeedStore');
+
+// create new fluxible instance  
+var app = new Fluxible({  
+    component: Application  
+});
+
+// register stores  
+app.registerStore(RouteStore);  
+app.registerStore(ApplicationStore);  
+app.registerStore(UserStore);
+app.registerStore(FeedStore);
+
+module.exports = app;
+</pre>
+
+<p>And finally, update the component to render information from the store.
+
+<p>/components/Feed.js</p>
+<pre>
+var React = require('react');  
+<strong>var connectToStores = require("fluxible-addons-react").connectToStores;
+var FeedStore = require('../stores/FeedStore');</strong>
+
+var Feed = React.createClass({  
+    render() {
+        return (  
+            &lt;div&gt;  
+                &lt;h2&gt;Your Constant Feed of Content&lt;/h2&gt;  
+                <strong>{  
+                    this.props.posts.map(function(post) {  
+                        var content;  
+                        if (post.type === &quot;text&quot;) {  
+                            content = (  
+                                &lt;span&gt;  
+                                    &lt;p&gt;{post.message}&lt;/p&gt;  
+                                &lt;/span&gt;  
+                            )  
+                        } else if (post.type === &quot;image&quot;) {  
+                            content = (  
+                                &lt;span&gt;  
+                                    &lt;img src={post.url} /&gt;  
+                                    &lt;p&gt;{post.message}&lt;/p&gt;  
+                                &lt;/span&gt;  
+                            )  
+                        }  
+                        return (  
+                            &lt;span&gt;  
+                                &lt;hr /&gt;  
+                                &lt;p&gt;&lt;strong&gt;Post by: {post.user}&lt;/strong&gt;&lt;/p&gt;  
+                                {content}  
+                            &lt;/span&gt;  
+                        )  
+                    })  
+                }</strong>
+            &lt;/div&gt; 
+        );  
+    }  
+});
+
+module.exports = <strong>connectToStores(  
+    Feed,  
+    [FeedStore],
+    function(context, props) {
+        return {
+            posts: context.getStore(FeedStore).getPosts()  
+        }
+    } 
+);</strong>
+</pre>
+
+<p>Cool. If any of this stuff looks unfamiliar, read the previous section again.</p>
+
+<p>Now, how do we trigger the action? We want the messages to be loaded even before the components loads so that it can be populated. Thankfully, in the router config file, we're able to set an action to be triggered when a user navigates to the proper route.</p>
+
+<p>/configs/routes.js</p>
+<pre>
+feed: {  
+    path: '/feed',  
+    method: 'get',  
+    page: 'feed',  
+    title: 'Your Feed',  
+    handler: require('../components/Feed'),  
+    <strong>action: require('../actions/getPosts')</strong>
+}  
+</pre>
+
+<h3>Using Plugins and Services with Fetchr (<a href="https://github.com/jaxoncreed/the-next-facebook/commit/76b2651f7d04c3df569dfcf5f1460ed82678b807" target="_blank">git diff</a>)</h3>
+
+<p>Now, we've a feed, but in the real world, we wouldn't be using dummy data. There'd probably be a database or external API to load the data from the feed.</p>
+
+<p>Remember when I went over services, the code that always lives on the server and handles actions that can only be executed on the server? Well, this is the perfect time to start using them. So, let's set up a service to load the feed!</p>
+
+<p>Services use fluxible's <a href="https://github.com/yahoo/fetchr" target="_blank">fetchr</a> plugin. So, first we need to install fetchr and load the plugin in app.js.</p>
+
+<pre>
+ $ npm install fluxible-plugin-fetchr --save
+</pre>
+
+<p>/app.js</p>
+<pre>
+var Fluxible = require('fluxible');  
+var Application = require('./components/Application');  
+
+var ApplicationStore = require('./stores/ApplicationStore');  
+var RouteStore = require('./stores/RouteStore');  
+var UserStore = require('./stores/UserStore');
+var FeedStore = require('./stores/FeedStore');
+
+<strong>var fetchr = require('fluxible-plugin-fetchr');
+var fetchrInstance = fetchr({
+    xhrPath: '/api'
+});</strong>
+
+// create new fluxible instance  
+var app = new Fluxible({  
+    component: Application  
+});
+
+<strong>app.plug(fetchrInstance);</strong>
+
+// register stores  
+app.registerStore(RouteStore);  
+app.registerStore(ApplicationStore);  
+app.registerStore(UserStore);
+app.registerStore(FeedStore);
+
+module.exports = app;  
+</pre>
+
+<p>Now let's create the service to retrieve all the posts. Services are designed to follow a RESTful design pattern which means that they are based on resources. Every service can be thought of something that will help you get and manipulate a resource. Fluxible services have four possible functions: <strong>read</strong> (retrieve), <strong>create</strong>, <strong>update</strong>, and <strong>delete</strong>. You don't need to use all the functions in the your service, and most of the time you probably won't.</p>
+
+<p>For The Next Facebook, we'll only need "read," so let's create the service:</p>
+
+<p>/services/PostService.js</p>
+<pre>
+var posts = require('../dummyData/posts.json');
+
+module.exports = {
+    name: "posts",
+    read: function(req, resource, params, config, callback) {
+        // We would do some kind of database call here.
+        callback(null, posts);
+    }
+}
+</pre>
+
+<p>As you can see, a service is simply an object. It requires a name to identify it, as well as the various functions for its CRUD (Create, Retrieve, Update, Delete) functionality. For the simplicity of this tutorial, we're not actually doing a database call, but in an actual production environment, the dummy data would obviously be gone.</p>
+
+<p>Just like stores, services must be registered. But, unlike stores they wouldn't be registered in app.js because app.js is shared between the client and server. We can register them in server.js.</p>
+
+<p>/server.js</p>
+<pre>
+...
+var debug = debugLib('fluxible-template');
+
+<strong>/* Regeister Services */
+app.getPlugin('FetchrPlugin').registerService(require('./services/PostService'));</strong>
+
+var server = express();
+server.use('/public', express.static(path.join(__dirname, '/build')));
+server.use(compression());
+...
+</pre>
+
+<p>And now, we can modify our "getPosts" action to use the service we just created.</p>
+
+<p>/actions/getPosts.js</p>
+<pre>
+module.exports = function (context, payload, callback) {
+    <strong>context.service.read('posts', {}, {}, function(err, posts) {
+        if (err) {
+            callback(err);
+        } else {</strong>
+            context.dispatch('POSTS_RECEIVED', {  
+                posts: posts  
+            });
+            callback();  
+        <strong>}
+    });</strong>
+};
+</pre>
+
+<p>Service are called within actions by using the "service" attribute of the action's context.</p>
+
+<p>Finally, let's bring it all together by explaining everthing in a service.</p>
+
+<pre>
+{
+    name: "myServiceName",
+    create: function(req, resource, params, body, config, callback) {},
+    read: function(req, resource, params, config, callback) {},
+    update: function(req, resource, params, body, config, callback) {},
+    delete: function(req, resource, params, config, callback) {}
+}
+</pre>
+
+<p>Here's a service with all possible attributes that's stripped on any distractions. The <strong>name</strong> attribute is just an identifier for this service and can be whatever you want. All the CRUD attributes have various parameters that could be helpful while writing your service:</p>
+
+<ul>
+    <li><strong>req</strong>: the raw request object representing the request recieved by the server. If you've ever worked with express, you're used to this object. It contains all the information you could possibly need about the request.</li>
+    <li><strong>resource</strong>: Simply a string representing the service that called this function. In this example, it would be "myServiceName." This is useful if you have a function that could serve multiple services.</li>
+    <li><strong>params</strong>: The parameters that were dictated in the action that called this service. You can also think of these like url parameters in regular http requests, but if you look at the way fluxible makes requests, you'll see that it doesn't follow the same question-mark standards for url parameters.</li>
+    <li><strong>body</strong>: The request body that was dictated in the action that called this service. Notice that only create and update have a body parameter. A body is the actual resource that you want to be created or updated, so it doesn't make sense for read or delete to use a body.</li>
+    <li><strong>config</strong>: This object was passed from the action as well. It contains some configuration information if provided in the action.</li>
+    <li><strong>callback</strong>: Call this function when you want to send a response back to the client. If there's an error call "callback(someErrorVariable)," and if it's successful call "callback(null, dataToReturn)."</li>
+</ul>
+
+<p>Based on that you should be able to ascertain purpose of each of the parameters in the action.</p>
+
+<pre>
+// Create  
+context.service.create('myServiceName', urlParameters, body, configs, callback);  
+// Read  
+context.service.read('myServiceName', urlParameters, configs, callback);  
+// Update  
+context.service.update('myServiceName', urlParameters, body, configs, callback);  
+// Delete  
+context.service.delete('myServiceName', urlParameters, configs, callback);  
+</pre>
+
+<h2>Conclusion</h2>
+
+<p>Congratulations, you're done! Now all you need to do is take the stellar product you just made and go into total growth-hacking mode. You'll be a multi-billion dollar company in no time!</p>
+

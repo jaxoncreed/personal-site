@@ -12,10 +12,3 @@ module.exports = function (context, payload, callback) {
         }
     });    
 };
-
-/*
-{
-    name: name
-}
-
-*/
