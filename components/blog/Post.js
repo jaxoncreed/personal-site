@@ -13,14 +13,13 @@ var Post = React.createClass({
                         <span style={{textAlign: "center", fontSize: "90%"}}>Comments & Questions</span>
                     </div>
                 </NavLink>
-                <div className="blogBackgroundDiv"></div>
                 <header className="blogPostHeader">
                     <div className="blogCenter">
                         <h1>{this.props.title}</h1>
                         <p>{this.props.summary}</p>
                     </div>
                 </header>
-                <span dangerouslySetInnerHTML={{__html: this.props.html}}></span>
+                <div className="blogCenter blogContent" dangerouslySetInnerHTML={{__html: this.props.html}}></div>
             </article>
         );
     }

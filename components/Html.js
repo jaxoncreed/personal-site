@@ -7,6 +7,7 @@ var Html = React.createClass({
             <html>
             <head>
                 <meta charSet="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
                 <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
                 <meta name="viewport" content="width=device-width, user-scalable=no" />
                 <link rel="stylesheet" href="/public/css/ojm.css" />

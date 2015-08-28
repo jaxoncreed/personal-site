@@ -11,7 +11,7 @@ var Resume = React.createClass({
                     </div>
                 </a>
                 <div className="resume-container">
-                    <object className="resume-object" height="1035" width="800" data="/public/files/Resume.pdf"></object>
+                    <object className="resume-object" width="100%" hieght="100%" data="/public/files/Resume.pdf"></object>
                 </div>
             </div>
         );

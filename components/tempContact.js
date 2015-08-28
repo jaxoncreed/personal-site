@@ -3,7 +3,7 @@ var React = require('react');
 var Home = React.createClass({
     render: function() {
         return (
-            <div className="centered-content">
+            <div className="blogCentered" style={{padding: "20px"}}>
                 <h1>Contact</h1>
                 <p>
                     <strong>Email:</strong> jaxoncreed@gmail.com

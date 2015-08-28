@@ -81,7 +81,7 @@ h1 {
     height: 100px;
     background-color: #3D9AD1;
     box-sizing: border-box;
-    padding: 40px;
+    padding: 30px;
     color: #EEEEEE;
     z-index: 100;
 }
@@ -164,11 +164,11 @@ h1 {
     height: 1035px;
 }
 .resume-object {
-    position:absolute;
-    left:50%;
-    margin-left:-400px;
-    width:800px;
-    height:1035px;
+    display: block;
+    position:relative;
+    height: 1035px;
+    max-width: 800px;
+    margin: auto;
 }
 
 /* Blog */
@@ -185,8 +185,10 @@ h1 {
     overflow: hidden;
 }
 .blogCenter {
-    width: 800px;
+    max-width: 800px;
+    position: relative;
     margin: auto;
+    z-index: 0;
     padding: 20px;
 }
 
@@ -200,22 +202,12 @@ h1 {
     background-color: #0969A2;
     color: #EEEEEE;
     position: relative;
-    margin-bottom: 40px;
 }
-.blogBackgroundDiv {
+.blogContent {
     background-color: #FFFFFF;
-    width: 800px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    margin-left:-400px;
-    left:50%;
-    z-index: 0;
 }
-.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre, .blogPostContainer ul {
+.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre, .blogPostContainer ul, {
     position: relative;
-    width: 760px;
-    margin: auto;
     margin-top: 10px;
     margin-bottom: 1em;
 }
@@ -228,7 +220,7 @@ h1 {
     z-index: 5;
     display: block;
     margin: auto;
-    max-width: 760px;
+    max-width: 100%;
     border-radius: 5px;
 }
 .blogPostContainer pre {
