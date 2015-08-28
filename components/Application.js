@@ -3,6 +3,7 @@
 var React = require('react');
 var Header = require('./Header');
 var Footer = require('./Footer');
+var SideBar = require('./SideBar');
 var ApplicationStore = require('../stores/ApplicationStore');
 var connectToStores = require("fluxible-addons-react").connectToStores;
 var provideContext = require('fluxible-addons-react').provideContext;
@@ -17,6 +18,7 @@ var Application = React.createClass({
             <div className="o-site-container">
                 <Header />
                 <div className="o-site-content">
+                    <SideBar />
                     <Handler key={this.props.pageTitle}  />
                 </div>
                 <Footer />

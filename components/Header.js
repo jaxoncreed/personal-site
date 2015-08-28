@@ -1,6 +1,7 @@
 var React = require('react');
 var NavLink = require('fluxible-router').NavLink;
 var NavigateAction = require('fluxible-router').navigateAction;
+var ToggleSideBar = require('../actions/toggleSideBar');
 var CircleButton = require('./ui/CircleButton');
 
 var Header = React.createClass({
@@ -26,7 +27,7 @@ var Header = React.createClass({
                     <div className="clear"></div>
                 </nav>
                 <nav className="smallNav">
-                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/contact"}} actionId="NavigateContact">
+                    <CircleButton action={ToggleSideBar} payload={{method:"GET", url:"/contact"}} actionId="SideBarToggling">
                         <span style={{fontSize: "150%"}}>☰</span>
                     </CircleButton>
                 </nav>
