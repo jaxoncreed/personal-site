@@ -79,6 +79,7 @@ h1 {
 .o-site-content {
     position: relative;
     min-height: 100%;
+    overflow: hidden;
 }
 
 .o-site-footer {
