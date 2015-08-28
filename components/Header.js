@@ -9,7 +9,8 @@ var Header = React.createClass({
             <header className="o-site-header">
                 <div className="logo">
                     <NavLink href="/">
-                        <h1>Jackson C Morgan</h1>
+                        <h1 className="largeLogo">Jackson C Morgan</h1>
+                        <h1 className="smallLogo">JCM</h1>
                     </NavLink>
                 </div>
                 <nav className="nav">
@@ -23,6 +24,11 @@ var Header = React.createClass({
                         Contact
                     </CircleButton>
                     <div className="clear"></div>
+                </nav>
+                <nav className="smallNav">
+                    <CircleButton action={NavigateAction} payload={{method:"GET", url:"/contact"}} actionId="NavigateContact">
+                        <span style={{fontSize: "150%"}}>☰</span>
+                    </CircleButton>
                 </nav>
                 <span className="clear"></span>
             </header>

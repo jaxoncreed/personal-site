@@ -97,6 +97,7 @@ h1 {
     align-items:center;
     color: #000000;
     transition: all 0.15s ease-in;
+    transition-property: color, background-color;
 }
 .o-circle-button:hover {
     color: #EEEEEE;
@@ -112,25 +113,42 @@ h1 {
     text-decoration: none;
 }
 
+.o-site-header .nav .o-circle-button, .o-site-header .smallNav .o-circle-button {
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: -15px;
+    cursor: pointer;
+}
+
 .o-site-header .logo {
     position: relative;
     height: 100%;
     float: left;
 }
 
-.o-site-header .nav {
-    height: 100%;
-    float: right;
-    right: 0px;
-    overflow: visible;
-}
+@media (min-width: 650px) {
+    .o-site-header .nav {
+        height: 100%;
+        float: right;
+        right: 0px;
+        overflow: visible;
+    }
 
-.o-site-header .nav .o-circle-button {
-    float: left;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-top: -15px;
-    cursor: pointer;
+    .o-site-header .smallLogo, .o-site-header .smallNav {
+        display: none;
+    }
+}
+@media (max-width: 651px) {
+    .o-site-header .largeLogo, .o-site-header .nav {
+        display: none;
+    }
+    .o-site-header .smallNav {
+        height: 100%;
+        float: right;
+        right: 0px;
+        overflow: visible;
+    }
 }
 
 /* Home */
@@ -152,9 +170,17 @@ h1 {
     text-decoration: underline;
     color: #111155;
 }
-.home-splash h1 {
-    font-size: 75px;
+@media (min-width: 400px) {
+    .home-splash h1 {
+        font-size: 75px;
 
+    }
+}
+@media (max-width: 400px) {
+    .home-splash h1 {
+        font-size: 55px;
+
+    }
 }
 
 /* Resume */
