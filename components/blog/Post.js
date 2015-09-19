@@ -8,11 +8,6 @@ var Post = React.createClass({
     render: function() {
         return (
             <article className="blogPostContainer">
-                <NavLink href="/contact">
-                    <div className="o-circle-button bottom-right">
-                        <span style={{textAlign: "center", fontSize: "90%"}}>Comments & Questions</span>
-                    </div>
-                </NavLink>
                 <header className="blogPostHeader">
                     <div className="blogCenter">
                         <h1>{this.props.title}</h1>
@@ -20,6 +15,11 @@ var Post = React.createClass({
                     </div>
                 </header>
                 <div className="blogCenter blogContent" dangerouslySetInnerHTML={{__html: this.props.html}}></div>
+                <NavLink href="/contact">
+                    <div className="o-circle-button bottom-right">
+                        <span style={{textAlign: "center", fontSize: "90%"}}>Comments & Questions</span>
+                    </div>
+                </NavLink>
             </article>
         );
     }

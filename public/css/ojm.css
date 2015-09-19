@@ -264,10 +264,13 @@ h1 {
 .blogContent {
     background-color: #FFFFFF;
 }
-.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre, .blogPostContainer ul, {
+.blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre, .blogPostContainer ul {
     position: relative;
     margin-top: 10px;
     margin-bottom: 1em;
+}
+.blogPostContainer ul {
+    padding-left: 20px;
 }
 .blogPostContainer a {
     text-decoration: underline;
@@ -292,6 +295,8 @@ h1 {
 .blogPostContainer pre strong {
     color: green;
 }
-
-
-
+.blogPostContainer iframe {
+    display: block;
+    position: relative;
+    margin: auto;
+}
