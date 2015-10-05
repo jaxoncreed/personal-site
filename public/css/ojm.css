@@ -253,7 +253,6 @@ h1 {
 /* Blog Post */
 
 .blogPostContainer {
-    padding-bottom: 30px;
     min-height: 800px;
 }
 .blogPostHeader {
@@ -263,11 +262,13 @@ h1 {
 }
 .blogContent {
     background-color: #FFFFFF;
+    min-height: 700px;
 }
 .blogPostContainer h1, .blogPostContainer h2, .blogPostContainer h3, .blogPostContainer p, .blogPostContainer pre, .blogPostContainer ul {
     position: relative;
     margin-top: 10px;
     margin-bottom: 1em;
+    padding-top: 10px;
 }
 .blogPostContainer ul {
     padding-left: 20px;

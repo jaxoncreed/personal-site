@@ -3,6 +3,12 @@
 // I know setting up a database is easy... shut up. I'll do it later.
 
 module.exports = {
+    "reactintro": {
+        title: "The React Tutorial",
+        summary: "Here's a video to help you learn React.js, a front-end framework that uses declarative code to organize the way you render web views.",
+        html: "reactTutorial",
+        date: "September 2015"
+    },
     "fluxiblemaster": {
         title: "Building a Site Using Isomorphic Flux with Fluxible",
         summary: "A complete guide to Fluxible, an implementation of Facebook’s Flux Design Pattern developed by Yahoo. Fluxible allows you to build Single Page Applications that are rendered on the server, while sharing the same code between client and server.",
